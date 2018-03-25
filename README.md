@@ -1,10 +1,4 @@
-# pythonWorkshop
- for SheHacks II @Western University. 
-
-[Slides available](http://bit.ly/shehacks2-introtopython)
-
-
-### Intro to Python
+## Intro to Python
 
 A workshop session for [SheHacks II](http://shehacks.ca/) at Western University. 
 Goes over basic python, getting data from the `Wunderground API`, and plotting with `seaborn`. 
