@@ -1,14 +1,19 @@
+class: impact
+
 # Intro to Python
 
 ## SheHacks II
-## Fatima @sugaroverflow
+Fatima | @sugaroverflow
 
 ---
 # Hi I'm Fatima
 
-.col-8[## @sugaroverflow
+.col-8[
+
 ## Tech Lead | Digital Echidna
-## BS Computer Science | NYU Engineering
+## BS Computer Science | NYU Engr
+
+### @sugaroverflow
 ]
 .col-4[
   .rounded-border[![journey](fatima.jpg)]
@@ -18,7 +23,7 @@
 
 # Python Essentials
 ## dynamic, interpreted language
-  - no type declarations
+  ### - no type declarations
 ## case sensitive
 ## object oriented
 
@@ -78,7 +83,9 @@ list_misc = ['first', [], 'second', [1, 2, 3, 4], 'third']
 print list_str[1] # world
 ```
 
---
+---
+# Data Types
+
 
 ```python
 # tuples
@@ -93,7 +100,7 @@ var_dictionary = {'A': 'apple', 'B': 'banana'}
 print var_dictionary['A'] # apple
 ```
 ---
-Conditionals
+# Conditionals
 
 ```python
 # if
@@ -101,6 +108,7 @@ my_name = 'Fatima'
 if my_name == 'Fatima':
   return TRUE
 ```
+--
 
 ```python
 # for
@@ -110,6 +118,9 @@ for num in num_list:
     print num
     # 2 4 6
 ```
+
+---
+# Conditionals
 
 ```python
 # while
@@ -153,7 +164,7 @@ At run time, functions must be defined by the execution of a "def" before they a
 
 ---
 # understanding an interpreted language
-```
+```python
 def main():
     if name == 'Fatima':
         print haaaappyBirthday(name) + '!!!'
@@ -165,17 +176,17 @@ def main():
 - This code compiles and runs fine so long as the name at runtime is not ‘Fatima’. Only when a run actually tries to execute the haaaappyBirthday() will it notice that there is no such function and raise an error.
 
 ---
----
 # Workshop
 ## Getting data from the Wunderground API
-  - using the  `urllib2` library
+  ### - using the  `urllib` library
 ## Visualizing that data with Seaborn
-  - using `Seaborn` a Python visualization library based on `matplotlib`
+  ### - using `Seaborn` viz library based on `matplotlib`
 
 ---
 # Wunderground API
-- worldwide weather data, weather reports,
-- maps & tropical weather conditions
+### worldwide weather data, weather reports,
+### maps & tropical weather conditions
+
 ## Register for API key
 `wunderground.com/weather/api`
 `aac66ae63af63f1d`
@@ -183,38 +194,39 @@ def main():
 ## API documentation
 `wunderground.com/weather/api/d/docs`
 
-##  Current Conditions in London
-http://api.wunderground.com/api/aac66ae63af63f1d/conditions/q/canada/London.json
 
 ---
 # Getting started with Python
 
-- create a `weatherdata.py` file in your project:
+create a `weatherdata.py` file in your project:
 
 ```python
 #!/usr/bin/env python
 
 # import modules used here
 import sys
-
+```
+--
+```python
 # Gather our code in a main() function
 def main():
     print "Intro to Python Workshop"
-
-# Standard boilerplate to call the main() function to begin
-# the program.
+```
+--
+```python
+# call the main() function to begin
 if __name__ == '__main__':
     main()
 ```
 ---
 
-# `urllib` library
+# urllib
 
 ## a Python module that can be used for fetching URLs.
 ##  functions and classes to help with URL actions
-  - basic  authentication,
-  - redirections,
-  - cookies, etc
+  ### - basic  authentication,
+  ### - redirections,
+  ### - cookies, etc
 
 ---
 # Creating a function
@@ -226,12 +238,11 @@ def get_weather_json(city):
     And writes it to a CSV file.
     """
     return "data"
-
+```
+--
+```python
 def main():
   get_weather_json('London')
-
-if __name__ == '__main__':
-    main()
 ```
 
 ???
@@ -239,11 +250,17 @@ if __name__ == '__main__':
 - call it from the main function.
 
 ---
-## Getting the data
+# Getting the data
 
 ```python
 def get_weather_json(city):
-    response = urlopen('http://api.wunderground.com/api/' + WAPI_KEY + '/forecast10day/q/canada/' + city + '.json')
+
+    response = urlopen('http://api.wunderground.com/api/'
+     + WAPI_KEY
+     + '/forecast10day/q/canada/'
+     + city
+     + '.json')
+
     data = json.load(response)
 ```
 
@@ -267,8 +284,7 @@ http://api.wunderground.com/api/aac66ae63af63f1d/forecast10day/q/canada/London.j
       writer.writerow(row)
 ```
 
-- and then run this script
-`python weatherdata.py`
+- `python weatherdata.py`
 
 ???
   - http://api.wunderground.com/api/aac66ae63af63f1d/forecast10day/q/canada/London.json
@@ -290,17 +306,17 @@ For those who’ve tinkered with Matplotlib before, you may have wondered, “wh
 
 ## a data analysis library
 ## takes data and creates a DataFrame
-- a python object with rows and columns (think excel!)
+### - a python object with rows and columns
 
 ???
 Python Data Analysis Library
-----
+---
 
 # Seaborn
 
 `seaborn.pydata.org`
 
-##  high-level interface to `Matplotlib`
+##  high-level interface to Matplotlib
 ## default themes, custom colour palettes
 ## visualizing information from matrices
 
@@ -310,18 +326,16 @@ Python Data Analysis Library
 
 ---
 # Plotting our temperature data
-## create a `plotweather.py`
+
+create a `plotweather.py`
 ```python
 
-# Pandas for managing datasets
 import pandas as pd
-
-# Matplotlib for additional customization
 from matplotlib import pyplot as plt
-
-# Seaborn for plotting and styling
 import seaborn as sns
-
+```
+--
+```python
 def main():
   # do fancy things here.
 
@@ -336,46 +350,56 @@ if __name__ == '__main__':
   temps = pd.read_csv('London.csv') # read data with pandas
 ```
 
-—
+--
+
 ```python
-  sns.pointplot(x="Day", y="Low Temp", data=temps) # plot with seaborn
+  # plot with seaborn
+  sns.pointplot(x = "Day", y = "Low Temp", data = temps)
 ```
 
-—
+--
+
 ```python
   plt.title("Graph of weekly Low temperature in London, Ontario")
   plt.xlabel("Day")
   plt.ylabel("Low Temp");
 ```
+--
 
-—
 ```python
   plt.show() # show the plot
 ```
 
 ---
 # Our first plot!
-[Image](lowtempplot.png)
+.half.center[![Image](low-temp-plot.png)]
 
 ---
 # Challenge!
+
 ## Plotting High & Low temperatures for London
 ## Median temps for Feb 2018
 ## Winter Snowfall
 ---
 
 # Other cool libraries
-## Numpy
-## Beautiful Soup
-## something
-## something
+## [NumPy](http://www.numpy.org/)
+## [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)
+## [Scikit-Learn](http://scikit-learn.org/)
+
+???
+- NumPy is the fundamental package for scientific computing with Python. It contains among other things:
+- Beautiful Soup is a Python library designed for quick turnaround projects like screen-scraping.
+-  It provides a set of common machine learning algorithms to users through a consistent interface. Scikit-Learn helps to quickly implement popular algorithms on datasets.
+
 ---
 
 # Resources and cool projects
-- [taylor-swift-lyrics/scrape.py at master · irenetrampoline/taylor-swift-lyrics · GitHub](https://github.com/irenetrampoline/taylor-swift-lyrics/blob/master/scrape.py)
-- [Humble Intro to Analysis with Pandas and Seaborn | Kaggle](https://www.kaggle.com/crawford/humble-intro-to-analysis-with-pandas-and-seaborn)
 
-
+##  [Analyze Taylor Lyrics using Python](https://github.com/irenetrampoline/taylor-swift-lyrics)
+##  [Humble Intro to Analysis with Pandas and Seaborn | Kaggle](https://www.kaggle.com/crawford/humble-intro-to-analysis-with-pandas-and-seaborn)
+## [Flask](http://flask.pocoo.org/)
+## [Face Recognition](https://github.com/ageitgey/face_recognition)
 
 
 
